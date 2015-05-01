@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/templateProy">
+  <Resource auth="Container" 
+            driverClassName="com.mysql.jdbc.Driver" 
+            logAbandoned="true" 
+            maxActive="100" 
+            maxIdle="30" 
+            name="jdbc/testdb" 
+            password="" 
+            removeAbandoned="true" 
+            removeAbandonedTimeout="60" 
+            type="javax.sql.DataSource" 
+            url="jdbc:mysql://localhost:3306/demo_mvc?autoReconnect=true" 
+            username=""/>
+  <!-- 
+    
+    Una fuente de datos representa una base de datos del mundo real, como puede 
+    ser una base de datos relacional Oracle.
+    
+    Cuando registramos una fuente de datos, cualquier aplicación puede recuperar 
+    la fuente de datos desde el servicio de nombres y utilizarla para realizar 
+    una conexión a la base de datos que representa.
+    
+    Al usar fuentes de datos, las aplicaciones no necesitan tener información 
+    específica como el nombre de la base de datos, el ID del usuario, o la clave 
+    para obtener una conexión a BD. Todo esta información se almacena en forma 
+    de propiedades en el objeto DataSource. Esto hace que la aplicación sea más 
+    portable porque no es necesario escribir en el código el nombre del driver, 
+    lo cual frecuentemente implica incluir el nombre de un fabricante en particular.
+    
+    El mantenimiento del código se hace mucho más fácil. Por ejemplo, si la Base 
+    de Datos (que representa la fuente de datos) se traslada a un servidor 
+    diferente, lo único que hay que hacer es cambiar la propiedad correspondiente 
+    en el objeto fuente de datos. El código de la aplicación que utiliza la 
+    fuente de datos no hay que tocarlo para nada.
+    
+    Propiedades de la configuración:
+    
+    maxActive is straight forward. maxIdle can be explained in this way - say 
+    you have 100 max Active connections and say you set maxIdle to 80. 
+    Assuming there are no requests going to the database, only 80 connections 
+    will be tested (via the validationquery) and will stay active. The other 20 
+    will be closed. So at any point you can only have 80 idle connections.
+    You might want to set this to be a different number to prevent additional 
+    (unnecessary) connections going out to the database. Cos every connection 
+    that is served by the database consumes resources (like memory).
+    But, assuming you have set the maxActive size to 100 and all 100 are in 
+    use almost all the time, this setting will obviously not matter.
+    
+    removeAbandoned - true or false: whether to remove abandoned connections 
+    from the pool. Default: false
+    
+    removeAbandonedTimeout - The number of seconds after which a borrowed 
+    connection is assumed to be abandoned. Default: 300
+    
+    logAbandoned - true or false: whether to log stack traces for application 
+    code which abandoned a statement or connection. This adds serious overhead. 
+    Default: false
+    
+    -->
+</Context>
